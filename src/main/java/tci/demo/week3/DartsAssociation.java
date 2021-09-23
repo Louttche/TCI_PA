@@ -2,6 +2,7 @@ package tci.demo.week3;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class DartsAssociation {
     private List<Member> members;
@@ -97,5 +98,16 @@ public class DartsAssociation {
 
     public PlayerScore GetCurrentScore(){
         return this.currentScore;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        return false;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this);
     }
 }

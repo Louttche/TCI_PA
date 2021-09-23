@@ -34,19 +34,20 @@ public class Student {
      * @should throw IllegalArgumentException if studentNumber is not 5 digits
      * @should throw IllegalArgumentException if semester is not in range 1 to 8
      */
-    public Student(int studentNumber, String name) throws IllegalArgumentException {
+    public Student(int studentNumber, String name, int sem) throws IllegalArgumentException {
         if (studentNumber < 0)
             throw new IllegalArgumentException("Student Number can't be negative.");
         if (String.valueOf(studentNumber).length() != 5)
             throw new IllegalArgumentException("Student Number needs to be 5 digits.");
+        if ((sem < 1) || (sem > 8))
+            throw new IllegalArgumentException("Student semester needs to be between 1-8.");
 
         this.studentNumber = studentNumber;
         this.firstName = name;
+
+        this.currentSemester = sem;
         if (this.getTotalECs() == 0)
             this.currentSemester = 1;
-
-        if ((currentSemester < 1) || (currentSemester > 8))
-            throw new IllegalArgumentException("Student semester needs to be between 1-8.");
     }
 
 
@@ -82,7 +83,6 @@ public class Student {
                 this.passedCourses.remove(c);
         }
     }
-
 
     /******************************************************
      *
