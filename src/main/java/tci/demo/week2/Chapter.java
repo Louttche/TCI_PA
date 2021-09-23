@@ -37,9 +37,13 @@ public class Chapter implements IChapter {
      *
      * @should throw IllegalArgumentException if number is null
      * @should throw IllegalArgumentException if name is null
-     * @should throw IllegalArgumentException if number and name of chapter already exists
      */
     public Chapter(Integer number, String name, Chapter parent/*, Set<Chapter> subchapters*/){
+        if (number == null)
+            throw new IllegalArgumentException("Number cannot be null.");
+        if (name == null)
+            throw new IllegalArgumentException("Name cannot be null.");
+
         this.number = number;
         this.name = name;
         this.parent = parent;

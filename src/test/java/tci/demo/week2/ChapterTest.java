@@ -40,7 +40,7 @@ class ChapterTest {
     /**
      * @verifies throw IllegalArgumentException if number and name of chapter already exists
      * @see Chapter#Chapter(Integer, String, Chapter)
-     */
+
     @Test
     public void Chapter_shouldThrowIllegalArgumentExceptionIfNumberAndNameOfChapterAlreadyExists() throws Exception {
 
@@ -60,5 +60,5 @@ class ChapterTest {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
             new Chapter(a_number, a_name,null);
         });
-    }
+    }*/
 }

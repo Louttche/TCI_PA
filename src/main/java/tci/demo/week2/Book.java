@@ -51,6 +51,11 @@ public class Book implements IBook {
      * @should throw IllegalArgumentException if author is null
      */
     public Book(String name, String author, List<Chapter> chapters){
+        if (name == null)
+            throw new IllegalArgumentException("Name cannot be null.");
+        if (author == null)
+            throw new IllegalArgumentException("Name cannot be null.");
+
         this.name = name;
         this.author = author;
         this.chapters = chapters;
