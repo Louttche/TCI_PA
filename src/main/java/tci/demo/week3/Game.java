@@ -6,6 +6,7 @@ import java.util.List;
 
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Game {
     private Member currentPlayer;
@@ -23,7 +24,14 @@ public class Game {
      * @should Throw IncorrectIdException if id is invalid
      * @should Throw IllegalArgumentException if players is null
      */
-    public Game(int id, List<Member> players){
+    public Game(int id, List<Member> players) throws IncorrectIdException {
+        if (players == null)
+            throw new IllegalArgumentException("Players can't be null.");
+        if (id <= 0)
+            throw new IncorrectIdException("Id cannot be negative");
+        if (id > 10)
+            throw new IncorrectIdException("Id cannot be a double digit");
+
         this.id = id;
         this.members = players;
         this.currentPlayer = players.get(0);
@@ -85,5 +93,18 @@ public class Game {
         }
 
         return false;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return id == game.GetID();
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

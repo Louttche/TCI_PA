@@ -12,6 +12,9 @@ public class PlayerScore {
      * @should throw IllegalArgumentException if score is null
      */
     public PlayerScore(Integer score, Game game, Member player){
+        if (score == null)
+            throw new IllegalArgumentException("Score can't be null.");
+
         this.score = score;
         this.game = game;
         this.member = player;

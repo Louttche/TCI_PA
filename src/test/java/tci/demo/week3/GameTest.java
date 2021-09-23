@@ -28,8 +28,9 @@ class GameTest {
         VALID_MEMBERS.add(mock(Member.class));
         VALID_MEMBERS.add(mock(Member.class));
 
-        // TODO: Make custom exception and throw it if id is invalid
-        Assertions.fail("Not yet implemented");
+        assertThatExceptionOfType(IncorrectIdException.class).isThrownBy(() -> {
+            new Game(id, VALID_MEMBERS);
+        });
     }
 
     private static Stream<Integer> generateInvalidID() {

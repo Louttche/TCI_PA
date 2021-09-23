@@ -17,6 +17,11 @@ public class DartsAssociation {
      * @should throw IllegalArgumentException if games is null
      */
     public DartsAssociation(List<Member> players, List<Game> games){
+        if (players == null)
+            throw new IllegalArgumentException("Players can't be null");
+        if (games == null)
+            throw new IllegalArgumentException("Games can't be null");
+
         this.members = players;
         this.games = games;
     }
@@ -33,13 +38,14 @@ public class DartsAssociation {
      *
      * @param name
      */
-    public void AddMember(String name){
-        //for (Member m:this.members) {
-        //    if (m.GetName() == name)
-        //        return;
-        //}
+    public void AddMember(String name) throws NonUniqueNameException {
+        for (Member m:this.members) {
+            if (m.GetName() == name)
+                throw new NonUniqueNameException("Member already exists.");
+        }
 
-        this.members.add(new Member(name));
+        Member m = new Member(name);
+        this.members.add(m);
     }
 
     public void ChangeMemberName(String initialName, String newName){
@@ -49,6 +55,10 @@ public class DartsAssociation {
         }
     }
 
+    public List<Member> GetMembers(){
+        return this.members;
+    }
+
     public void DeleteMember(String name){
         for (Member m:this.members) {
             if (m.GetName() == name)
@@ -56,7 +66,7 @@ public class DartsAssociation {
         }
     }
 
-    public void CreateGame(Member player1, Member player2){
+    public void CreateGame(Member player1, Member player2) throws IncorrectIdException {
         List<Member> membersToAdd = new ArrayList<>();
         membersToAdd.add(player1);
         membersToAdd.add(player2);
