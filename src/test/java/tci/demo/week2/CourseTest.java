@@ -1,13 +1,12 @@
-package tci.demo.week1.schoolassignment;
+package tci.demo.week2;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
+import tci.demo.week1.Course;
 
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
@@ -17,28 +16,16 @@ class CourseTest {
     private static String VALID_CODE = "TCI";
     private static int VALID_EC = 3;
 
-    @Test
-    void getEc() {
-    }
-
-    @Test
-    void getName() {
-    }
-
-    @Test
-    void getCode() {
-    }
-
     /**
      * @verifies only take in valid values
-     * @see Course#Course(String, Integer, String)
+     * @see tci.demo.week1.Course#Course(String, Integer, String)
      */
     @Test
     public void Course_shouldOnlyTakeInValidValues() throws Exception {
         //TODO auto-generated
         //act
 
-        Course sut = new Course(VALID_NAME, VALID_EC, VALID_CODE);
+        tci.demo.week1.Course sut = new tci.demo.week1.Course(VALID_NAME, VALID_EC, VALID_CODE);
         //arrange // assert
 
         assertThat(sut.getName()).isEqualTo(VALID_NAME);
@@ -48,25 +35,25 @@ class CourseTest {
 
     /**
      * @verifies throw IllegalArgumentException if name is null
-     * @see Course#Course(String, Integer, String)
+     * @see tci.demo.week1.Course#Course(String, Integer, String)
      */
     @Test
     public void Course_shouldThrowIllegalArgumentExceptionIfNameIsNull() throws Exception {
         //TODO auto-generated
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            new Course(null, VALID_EC, VALID_CODE);
+            new tci.demo.week1.Course(null, VALID_EC, VALID_CODE);
         });
     }
 
     /**
      * @verifies throw IllegalArgumentException if code is shorter or longer
-     * @see Course#Course(String, Integer, String)
+     * @see tci.demo.week1.Course#Course(String, Integer, String)
      */
     @ParameterizedTest
     @MethodSource("generateCodeWithInvalidSize")
     public void Course_shouldThrowIllegalArgumentExceptionIfCodeIsShorterOrLonger(String code) throws Exception {
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() ->{
-           new Course(VALID_NAME, VALID_EC, code);
+           new tci.demo.week1.Course(VALID_NAME, VALID_EC, code);
         });
     }
 
@@ -76,20 +63,20 @@ class CourseTest {
 
     /**
      * @verifies throw IllegalArgumentException if code is not in uppercase
-     * @see Course#Course(String, Integer, String)
+     * @see tci.demo.week1.Course#Course(String, Integer, String)
      */
     @Test
     public void Course_shouldThrowIllegalArgumentExceptionIfCodeIsNotInUppercase() throws Exception {
         String invalid_code = "Abcd";
 
         assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> {
-            new Course(VALID_NAME, VALID_EC, invalid_code);
+            new tci.demo.week1.Course(VALID_NAME, VALID_EC, invalid_code);
         });
     }
 
     /**
      * @verifies throw IllegalArgumentException if ec is negative
-     * @see Course#Course(String, Integer, String)
+     * @see tci.demo.week1.Course#Course(String, Integer, String)
      */
     @Test
     public void Course_shouldThrowIllegalArgumentExceptionIfEcIsNegative() throws Exception {

@@ -1,4 +1,4 @@
-package tci.demo.week1.schoolassignment;
+package tci.demo.week1;
 
 /**
  * A Course is an IMMUTABLE object with a given name, code and ec.
